@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: inventory-catalog
+  labels:
+    app: inventory-catalog
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: inventory-catalog
+  template:
+    metadata:
+      labels:
+        app: inventory-catalog
+    spec:
+      containers:
+      - name: inventory-catalog
+       # image: codeworksak/inventory-catalog:18
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+        resources:
+         # limits:
+          #  memory: "256Mi"
+           # cpu: "500m"
+         # requests:
+          #  memory: "128Mi"
+           # cpu: "250m"
+           {{- toYaml .Values.resources | nindent 10 }}
+       # imagePullPolicy: IfNotPresent
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        ports:
+        - containerPort: {{ .Values.service.port }}
