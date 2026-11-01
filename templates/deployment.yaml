@@ -24,8 +24,8 @@ spec:
          # requests:
           #  memory: "128Mi"
            # cpu: "250m"
-           {{- toYaml .Values.resources | nindent 10 }}
+           "{{- toYaml .Values.resources | nindent 10 }}"
        # imagePullPolicy: IfNotPresent
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        imagePullPolicy: "{{ .Values.image.pullPolicy }}"
         ports:
-        - containerPort: {{ .Values.service.port }}
+        - containerPort: "{{ .Values.service.port }}"
