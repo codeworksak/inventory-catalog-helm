@@ -16,7 +16,6 @@ spec:
     spec:
       containers:
       - name: inventory-catalog
-       # image: codeworksak/inventory-catalog:18
         image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
         resources:
          # limits:
