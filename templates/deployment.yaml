@@ -5,7 +5,7 @@ metadata:
   labels:
     app: inventory-catalog
 spec:
-  replicas: "{{ .Values.replicaCount | int }}"
+  replicas: {{ .Values.replicaCount | int }}
   selector:
     matchLabels:
       app: inventory-catalog
@@ -24,8 +24,8 @@ spec:
          # requests:
           #  memory: "128Mi"
            # cpu: "250m"
-           "{{- toYaml .Values.resources | nindent 10 }}"
+           {{- toYaml .Values.resources | nindent 10 }}
        # imagePullPolicy: IfNotPresent
         imagePullPolicy: "{{ .Values.image.pullPolicy }}"
         ports:
-        - containerPort: "{{ .Values.service.port | int }}"
+        - containerPort: {{ .Values.service.port | int }}

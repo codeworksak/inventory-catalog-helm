@@ -9,8 +9,8 @@ spec:
     app: inventory-catalog
   ports:
   - protocol: TCP
-    port: "{{ .Values.service.port | int }}"
-    targetPort: "{{ .Values.service.port | int }}"
-    nodePort: "{{ .Values.service.nodePort | int }}"
+    port: {{ .Values.service.port | int }}
+    targetPort: {{ .Values.service.port | int }}
+    nodePort: {{ .Values.service.nodePort | int }}
  # type: NodePort
   type: "{{ .Values.service.type }}"
